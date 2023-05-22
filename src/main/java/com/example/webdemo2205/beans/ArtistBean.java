@@ -16,7 +16,26 @@ public class ArtistBean implements Serializable {
     @EJB
     private ArtistDao artistDao;
 
+    private Artist artist = new Artist();
+
     public List<Artist> getArtists() {
         return artistDao.findAll();
+    }
+
+    public Artist getArtist() {
+        return artist;
+    }
+
+    public void setArtist(Artist artist) {
+        this.artist = artist;
+    }
+
+    public void addArtist() {
+        artistDao.addArtist(artist);
+        artist = new Artist();
+    }
+
+    public void deleteArtist(int id) {
+        artistDao.deleteArtistById(id);
     }
 }

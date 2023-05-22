@@ -7,18 +7,29 @@
 <f:view>
     <h:head>
         <title>Artists</title>
+        <h:outputStylesheet library="css" name="styles.css"/>
     </h:head>
     <h:body>
-        <h:dataTable value="#{artistBean.artists}" var="a">
-            <h:column>
-                <f:facet name="header">id</f:facet>
-                <h:outputText value="#{a.id}"/>
-            </h:column>
-            <h:column>
-                <f:facet name="header">name</f:facet>
-                <h:outputText value="#{a.name}"/>
-            </h:column>
-        </h:dataTable>
+        <h:form>
+            <h:outputLabel value="New artist:"/>
+            <h:inputText value="#{artistBean.artist.name}"/>
+            <h:commandButton value="Add" action="#{artistBean.addArtist()}"/>
+
+            <h:dataTable value="#{artistBean.artists}" var="a">
+                <h:column>
+                    <f:facet name="header">id</f:facet>
+                    <h:outputText value="#{a.id}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">name</f:facet>
+                    <h:outputText value="#{a.name}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">X</f:facet>
+                    <h:commandButton value="Delete" action="#{artistBean.deleteArtist(a.id)}"/>
+                </h:column>
+            </h:dataTable>
+        </h:form>
     </h:body>
 </f:view>
 </html>

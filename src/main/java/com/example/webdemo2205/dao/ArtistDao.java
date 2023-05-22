@@ -7,6 +7,7 @@ import lombok.SneakyThrows;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -30,5 +31,24 @@ public class ArtistDao {
             }
         }
         return result;
+    }
+
+    @SneakyThrows
+    public void addArtist(Artist artist) {
+        try (Connection connection = ds.getConnection();
+             PreparedStatement ps = connection.prepareStatement("insert into artist (Name) values (?)")) {
+            ps.setString(1, artist.getName());
+            ps.executeUpdate();
+        }
+    }
+
+    @SneakyThrows
+    public void deleteArtistById(int id) {
+        try (Connection connection = ds.getConnection();
+             PreparedStatement ps = connection.prepareStatement("delete from artist where ArtistId = ?")
+        ) {
+            ps.setInt(1, id);
+            ps.executeUpdate();
+        }
     }
 }
