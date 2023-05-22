@@ -10,6 +10,17 @@
     </h:head>
     <h:body>
         <h1>Hello, World!</h1>
+        <h:form>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Start:"/>
+                <h:inputText value="#{tabulationBean.start}"/>
+                <h:outputLabel value="Finish:"/>
+                <h:inputText value="#{tabulationBean.finish}"/>
+                <h:outputLabel value="Step:"/>
+                <h:inputText value="#{tabulationBean.step}"/>
+                <h:commandButton value="Tab" action="#{tabulationBean.tabulate()}"/>
+            </h:panelGrid>
+        </h:form>
     </h:body>
 </f:view>
 </html>
