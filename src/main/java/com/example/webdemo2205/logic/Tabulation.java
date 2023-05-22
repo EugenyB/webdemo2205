@@ -1,10 +1,12 @@
 package com.example.webdemo2205.logic;
 
 import com.example.webdemo2205.data.Point;
+import jakarta.ejb.Stateless;
 
 import java.util.List;
 import java.util.stream.IntStream;
 
+@Stateless
 public class Tabulation {
     public List<Point> tabulate(double start, double finish, double step) {
         int n = (int) Math.round((finish - start) / step + 1);
