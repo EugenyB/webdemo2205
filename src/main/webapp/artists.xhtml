@@ -28,6 +28,10 @@
                     <f:facet name="header">X</f:facet>
                     <h:commandButton value="Delete" action="#{artistBean.deleteArtist(a.id)}"/>
                 </h:column>
+                <h:column>
+                    <f:facet name="header">E</f:facet>
+                    <h:commandButton value="Edit" action="#{artistBean.edit(a)}"/>
+                </h:column>
             </h:dataTable>
         </h:form>
     </h:body>

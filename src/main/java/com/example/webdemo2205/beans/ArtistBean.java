@@ -38,4 +38,15 @@ public class ArtistBean implements Serializable {
     public void deleteArtist(int id) {
         artistDao.deleteArtistById(id);
     }
+
+    public String edit(Artist artist) {
+        this.artist = artist;
+        return "editartist";
+    }
+
+    public String updateArtist() {
+        artistDao.update(artist);
+        artist = new Artist();
+        return "artists";
+    }
 }

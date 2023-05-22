@@ -51,4 +51,14 @@ public class ArtistDao {
             ps.executeUpdate();
         }
     }
+
+    @SneakyThrows
+    public void update(Artist artist) {
+        try (Connection connection = ds.getConnection();
+             PreparedStatement ps = connection.prepareStatement("update artist set Name=? where ArtistId = ?")) {
+            ps.setString(1, artist.getName());
+            ps.setInt(2, artist.getId());
+            ps.executeUpdate();
+        }
+    }
 }
